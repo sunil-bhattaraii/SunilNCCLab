@@ -1,0 +1,96 @@
+{
+  "version": 3,
+  "targets": {
+    "net9.0": {
+      "Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shared.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Shared/1.0.0": {
+      "type": "project",
+      "path": "../Shared/Shared.csproj",
+      "msbuildProject": "../Shared/Shared.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net9.0": [
+      "Shared >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/home/linus/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/home/linus/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-6/Lab-6.csproj",
+      "projectName": "Lab-6",
+      "projectPath": "/home/linus/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-6/Lab-6.csproj",
+      "packagesPath": "/home/linus/.nuget/packages/",
+      "outputPath": "/home/linus/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-6/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/home/linus/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net9.0"
+      ],
+      "sources": {
+        "/usr/lib/dotnet/library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "projectReferences": {
+            "/home/linus/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Shared/Shared.csproj": {
+              "projectPath": "/home/linus/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Shared/Shared.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.100"
+    },
+    "frameworks": {
+      "net9.0": {
+        "targetAlias": "net9.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/9.0.118/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
