@@ -8,19 +8,17 @@ class Program
 {
     static void Main()
     {
-        Console.WriteLine("Enter text (type 'exit' to stop):");
+        Console.WriteLine("Enter lines (type 'exit' to stop):");
 
         string path = "output.txt";
         using (StreamWriter writer = new StreamWriter(path))
         {
             string? line;
             while ((line = Console.ReadLine()) != null && line != "exit")
-            {
                 writer.WriteLine(line);
-            }
         }
 
-        Console.WriteLine($"\nContents written to {path}:\n");
+        Console.WriteLine($"\nFile written to {path}");
         Console.WriteLine(File.ReadAllText(path));
 
         Shared.Print.MyDetails(12);

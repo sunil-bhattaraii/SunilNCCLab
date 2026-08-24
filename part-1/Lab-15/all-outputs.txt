@@ -1,0 +1,200 @@
+?main ~/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-1> dotnet run
+This is static constructor
+
+Using default constructor
+Name : 
+Price: 0
+
+Using parameterized constructor
+Name : wai wai
+Price: 25
+
+Using copy constructor
+Name : wai wai
+Price: 25
+
+Using private constructor
+id: 0
+Name: Mr. Maalik
+
+
+Lab No.: 1
+Name: Sunil Bhattarai
+Roll No.: 63/080(B)
+
+?main ~/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-2> dotnet run
+College: Patan Multiple Campus
+Chief: Dr. Raghubir Bista
+
+Lab No.: 2
+Name: Sunil Bhattarai
+Roll No.: 63/080(B)
+
+?main ~/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-3> dotnet run
+row 1: 1, 2, 
+row 2: 3, 4, 5, 
+row 3: 6, 7, 8, 9, 10, 
+
+Lab No.: 3
+Name: Sunil Bhattarai
+Roll No.: 63/080(B)
+
+?main ~/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-4> dotnet run
+Ram's Roll No. is 10.
+The name of Roll No. 13 is sita.
+
+Lab No.: 4
+Name: Sunil Bhattarai
+Roll No.: 63/080(B)
+
+?main ~/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-5> dotnet run
+Name: leo
+HP: 1000
+Mana: 1000
+
+Lab No.: 5
+Name: Sunil Bhattarai
+Roll No.: 63/080(B)
+
+?main ~/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-6> dotnet run
+I am a Teacher
+I am a Teacher
+My Gross Salary is 60,000.
+My Base Salary is 40,000.
+
+Lab No.: 6
+Name: Sunil Bhattarai
+Roll No.: 63/080(B)
+
+?main ~/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-7> dotnet run
+I am a living Creature
+Quack, Quack, I walk
+I can Flyy...
+Splash! Splash!
+
+Lab No.: 7
+Name: Sunil Bhattarai
+Roll No.: 63/080(B)
+
+?main ~/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-8> dotnet run
+Book: Harry Potter, Price: 500
+Season: Summer
+Player: Neymar
+
+Lab No.: 8
+Name: Sunil Bhattarai
+Roll No.: 63/080(B)
+
+?main ~/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-9> dotnet run
+Hello, Sunil
+Hello, Ram
+Bye, Ram
+Func: 7
+Action: Delegate Demo
+Farewell, Hari
+Button was clicked
+
+Lab No.: 9
+Name: Sunil Bhattarai
+Roll No.: 63/080(B)
+
+?main ~/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-10> dotnet run
+Non-Generic Collection:
+1, two, 3, 
+Generic Collection:
+10, 20, 30, 
+
+Lab No.: 10
+Name: Sunil Bhattarai
+Roll No.: 63/080(B)
+
+?main ~/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-11> dotnet run
+Int Box: 10
+Generic Method: hello
+String Box: Hello
+Generic Method: 99
+
+Lab No.: 11
+Name: Sunil Bhattarai
+Roll No.: 63/080(B)
+
+?main ~/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-12> dotnet run
+Enter lines (type 'exit' to stop):
+
+File written to output.txt
+this demo text is written to a file using c#
+
+
+Lab No.: 12
+Name: Sunil Bhattarai
+Roll No.: 63/080(B)
+
+?main ~/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-13> dotnet run
+Even:
+8, 2, 
+Sorted:
+1, 2, 3, 5, 8, 9, 
+Doubled:
+10, 6, 16, 2, 18, 4, 
+Lab No.: 13
+Name: Sunil Bhattarai
+Roll No.: 63/080(B)
+
+?main ~/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-14> dotnet run
+Add: 7
+
+Even: 2, 4
+
+Lab No.: 14
+Name: Sunil Bhattarai
+Roll No.: 63/080(B)
+
+?main ~/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-15> dotnet run
+Enter a valid age: 
+Age: 15
+The age is valid
+Program Terminated
+
+Lab No.: 15
+Name: Sunil Bhattarai
+Roll No.: 63/080(B)
+
+~/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-15> dotnet run
+Enter a valid age: 
+ERROR: Age cannot be negative
+Program Terminated
+
+Lab No.: 15
+Name: Sunil Bhattarai
+Roll No.: 63/080(B)
+
+~/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-15> dotnet run
+Enter a valid age: 
+Please enter a valid number.
+Program Terminated
+
+Lab No.: 15
+Name: Sunil Bhattarai
+Roll No.: 63/080(B)
+
+?main ~/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-16> dotnet run
+/home/linus/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-16/Program.cs(22,9): warning CS0618: 'Program.OldMethod()' is obsolete: 'Use NewMethod() instead.' [/home/linus/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-16/Lab-16.csproj]
+Old Method
+Sunil
+
+Lab No.: 16
+Name: Sunil Bhattarai
+Roll No.: 63/080(B)
+
+?main ~/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/Lab-17> dotnet run
+Downloading file1...
+Downloading file2...
+Downloaded file2
+Downloaded file1
+
+Result: 42
+
+Lab No.: 17
+Name: Sunil Bhattarai
+Roll No.: 63/080(B)
+
