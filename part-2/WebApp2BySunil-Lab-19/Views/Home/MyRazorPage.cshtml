@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "MyRazorPage";
+    DateTime now = DateTime.Now;
+}
+
+<h1>MyRazorPage</h1>
+
+<div>
+    <div class="fw-medium">
+        @now
+    </div>
+    <div>Name: Sunil Bhattarai</div>
+    <div>Roll No.: 63/080</div>
+</div>
+
+<div class="mt-4">
+    <h2>Multiplication table of 64:</h2>
+    <ul>
+        @for (int i = 1; i <= 10; i++)
+        {
+            <li>64 x @i = @(64 * i)</li>
+        }
+
+
+    </ul>
+</div>

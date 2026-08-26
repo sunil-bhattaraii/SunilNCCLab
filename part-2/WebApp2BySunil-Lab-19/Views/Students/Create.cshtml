@@ -1,0 +1,51 @@
+@model WebApp2BySunil_Lab_19.Models.Student
+
+@{
+  ViewData["Title"] = "Create Student";
+}
+
+<h2>Create Student Record</h2>
+
+<form asp-action="Create" method="post">
+
+  <div>
+    <label asp-for="StdID"></label>
+    <input asp-for="StdID" placeholder="002"/>
+    <span asp-validation-for="StdID" class="text-danger"></span>
+  </div>
+
+
+  <div>
+    <label asp-for="Name"></label>
+    <input asp-for="Name" placeholder="Hari Bahadur Rai"/>
+    <span asp-validation-for="Name" class="text-danger"></span>
+  </div>
+
+
+  <div>
+    <label asp-for="Address"></label>
+    <input asp-for="Address" placeholder="Patandhoka, Lalitpur"/>
+    <span asp-validation-for="Address" class="text-danger"></span>
+  </div>
+
+
+  <div>
+    <label asp-for="Faculty"></label>
+    <input asp-for="Faculty" placeholder="B.Sc. CSIT"/>
+    <span asp-validation-for="Faculty" class="text-danger"></span>
+  </div>
+
+
+  <div>
+    <label asp-for="Email"></label>
+    <input asp-for="Email" placeholder="haribd@gmail.com"/>
+    <span asp-validation-for="Email" class="text-danger"></span>
+  </div>
+
+  <br>
+
+  <button type="submit">
+    Submit
+  </button>
+
+</form>
