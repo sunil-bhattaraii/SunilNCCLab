@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "sqlproj: Build LabReports",
+			"type": "process",
+			"command": "dotnet",
+			"args": [
+				"build",
+				"/home/linus/B.Sc. CSIT/6th_sem/lab reports/SunilNCCLab/part-2/CRUD-App_Lab-22/LabReports/LabReports.sqlproj"
+			],
+			"problemMatcher": "$sqlproj-problem-matcher",
+			"isBackground": true,
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "Builds the LabReports SQL project"
+		}
+	]
+}
