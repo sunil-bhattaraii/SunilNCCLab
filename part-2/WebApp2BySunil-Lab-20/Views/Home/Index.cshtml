@@ -2,7 +2,36 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<div>
+    <h1>Dependency Injection</h1><br>
+    <form asp-action="Index">
+        <button type="submit">
+            Connect to DB <br>
+        </button>
+    </form> <br>
+
+    <div>
+        Page Requested @ViewData["Counter"] times.
+    </div>
+
+    <h3>DB Instances created:</h3>
+    <div class="d-flex gap-4">
+        <div>
+            <h4>Singleton DI</h4>
+            db: @ViewData["Sd1"] <br>
+            db2: @ViewData["Sd2"]
+        </div>
+        <div>
+            <h4>Scoped DI</h2>
+                db: @ViewData["Sc1"] <br>
+                db2: @ViewData["Sc2"]
+            </div>
+            <div>
+                <h4>Transcient DI</h4>
+                db: @ViewData["Td1"] <br>
+                db2: @ViewData["Td2"]
+            </div>
+        </div>
+
+        <br>
+    </div>
