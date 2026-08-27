@@ -1,8 +1,52 @@
-﻿@{
+﻿@using System.Text.Json
+@{
     ViewData["Title"] = "Home Page";
+
+    string json = "{\"Name\": \"Sunil Bhattarai\", \"Age\": 21}";
+    Student s = JsonSerializer.Deserialize<Student>(json)!;
+
+    string fileText = System.IO.File.ReadAllText("public/data.json");
+    List<Student> students = JsonSerializer.Deserialize<List<Student>>(fileText)!;
 }
 
-<div class="text-center">
+<div>
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div>
+        Json String: @json <br><br>
+        <div>
+            <h4>Object: </h4>
+            <div>
+                Name: @s?.Name <br>
+                Age: @s?.Age
+            </div><br>
+            <h4>file text:</h4>
+            <form method="post" asp-action="UpdateFIle">
+                <textarea name="fileText" id="fileText" rows="5" cols="30">@fileText</textarea>
+                <button type="submit">Update</button>
+            </form><br>
+
+            <h4>Add Students:</h4>
+            <form method="post" asp-action="AddStudent">
+                <input name="name" type="text" placeholder="Name e.g. Ram Rai">
+                <input name="age" type="number" placeholder="Age e.g. 44">
+                <button type="submit">Add</button>
+            </form><br>
+
+            <h4>File Objects: </h4>
+            <table class="table-bordered" cellpadding="5">
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                </tr>
+                @foreach (var st in students)
+                {
+                    <tr>
+                        <td>@st.Name</td>
+                        <td>@st.Age</td>
+                    </tr>
+                }
+            </table>
+
+        </div>
+    </div>
 </div>
