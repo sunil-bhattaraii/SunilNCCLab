@@ -70,7 +70,6 @@ public class StudentDb
 
   public bool UpdateStudent(Student s)
   {
-    Console.WriteLine($"updating {s.Name} for roll: {s.Roll}");
     string sql = $"Update Students SET Name = '{s.Name}', Faculty = '{s.Faculty}' where Roll = {s.Roll};";
     return ExecuteQuery(sql);
   }

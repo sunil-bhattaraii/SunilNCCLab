@@ -30,7 +30,6 @@ public class StudentsController : Controller
   [HttpGet]
   public IActionResult Update(int id)
   {
-    Console.WriteLine(id);
     return View(_sdb.GetStudent(id));
   }
 
