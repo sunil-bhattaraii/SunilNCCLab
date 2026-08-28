@@ -1,7 +1,10 @@
+using WebApp5BySunil_Lab_23.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<StudentDb>();
 
 var app = builder.Build();
 

@@ -1,0 +1,30 @@
+@model List<Student>
+
+</div>
+
+<h1 class="d-flex gap-5">Students List
+  <a asp-controller="Students" asp-action="Create" class="btn text-light fw-bold bg-success mb-4">+ Add Student</a>
+
+</h1>
+<table cellpadding="8" class="table-bordered">
+  <tr>
+    <th>Roll</th>
+    <th>Name</th>
+    <th>Faculty</th>
+    <th class="text-center">Actions</th>
+  </tr>
+  @{
+    foreach (var s in Model)
+    {
+      <tr>
+        <td>@s.Roll</td>
+        <td>@s.Name</td>
+        <td>@s.Faculty</td>
+        <td class="d-flex gap-3">
+          <a asp-controller="Students" asp-action="Update" asp-route-id="@s.Roll">edit</a>
+          <a asp-controller="Students" asp-action="DeleteStudent" asp-route-id="@s.Roll"> delete</a>
+        </td>
+      </tr>
+    }
+  }
+</table>
