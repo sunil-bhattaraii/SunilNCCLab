@@ -3,7 +3,7 @@
 </div>
 
 <h1 class="d-flex gap-5">Students List
-  <a asp-controller="Students" asp-action="Create" class="btn text-light fw-bold bg-success mb-4">+ Add Student</a>
+  <a asp-controller="Students" asp-action="Create" class="btn btn-primary fw-bold">+ Add Student</a>
 
 </h1>
 <table cellpadding="8" class="table-bordered">
@@ -21,8 +21,8 @@
         <td>@s.Name</td>
         <td>@s.Faculty</td>
         <td class="d-flex gap-3">
-          <a asp-controller="Students" asp-action="Update" asp-route-id="@s.Roll">edit</a>
-          <a asp-controller="Students" asp-action="DeleteStudent" asp-route-id="@s.Roll"> delete</a>
+          <a asp-controller="Students" asp-action="Update" asp-route-id="@s.Roll" class="btn btn-secondary">edit</a>
+          <a asp-controller="Students" asp-action="DeleteStudent" asp-route-id="@s.Roll" class="btn btn-danger"> delete</a>
         </td>
       </tr>
     }
