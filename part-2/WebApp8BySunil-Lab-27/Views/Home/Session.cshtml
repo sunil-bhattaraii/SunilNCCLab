@@ -1,0 +1,23 @@
+@model string
+
+<h1>Welcome Back</h1>
+
+<div class="display-1 alert alert-success fw-bold border-2">
+  @Context.Session.GetString("Username")</div>
+
+  <h3>See I remembered you :)</h3>
+
+  <a asp-controller="Home" asp-action="ClearSession">Forget me.</a>
+
+  @{
+    var role = Context.Items["messasge"];
+  }
+  <br><br>
+  <h4>
+    Message from HttpContext Item:
+  </h4>
+  <p class="alert alert-secondary">
+    @Model
+  </p>
+
+  @ViewData["Data"]

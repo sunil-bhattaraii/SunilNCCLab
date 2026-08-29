@@ -3,6 +3,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSession();
+builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 
@@ -27,5 +28,11 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
+//middleware to leave httpcontext.item message
+app.Use(async (context, next) =>
+{
+    context.Items["message"] = $"Hello from middleware at {DateTime.Now}";
+    await next();
+});
 
 app.Run();

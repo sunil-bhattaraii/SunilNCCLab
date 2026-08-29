@@ -4,5 +4,17 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <form method="post" asp-action="Index">
+        <label for="name">Tell me your name(I'll remember it): </label><br>
+        <input type="text" name="Name">
+        <button type="submit">Send</button>
+    </form>
+
+    @if (TempData["Info"] != null)
+    {
+        <div class="alert alert-primary mt-4">
+            @TempData["Info"]
+        </div>
+    }
 </div>
