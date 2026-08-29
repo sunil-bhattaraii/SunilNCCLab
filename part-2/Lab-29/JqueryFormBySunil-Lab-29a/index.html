@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>JqueryFormBySunil-Lab-29a</title>
+
+    <style>
+      * {
+        margin: 4px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      Name: Sunil Bhattarai <br>
+      Roll No.: 63/080
+    </div><br>
+    <form action="/" id="form">
+      <fieldset>
+          <legend>Registration Form</legend>
+        Username:
+        <input type="text" name="Username" id="username" />
+        <br />
+        Password:
+        <input type="text" name="password" id="p" />
+        <br />
+        Confirm Password:
+        <input type="text" name="confirm-password" id="cp" />
+        <br />
+        <div id="error" style="color: red"></div>
+        <br />
+
+        <button type="submit">Sign Up</button>
+      </fieldset>
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
