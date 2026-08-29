@@ -13,9 +13,38 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    [HttpGet]
     public IActionResult Index()
     {
-        return View();
+        string? username = Request.Cookies["Username"];
+
+        if (username != null)
+            return View("Session");
+        else
+            return View();
+    }
+
+    [HttpPost]
+    public IActionResult RegisterUser(string hidden, string name)
+    {
+        Console.WriteLine($"The hidden value was: {hidden}");
+
+        Response.Cookies.Append("Username", name, new CookieOptions
+        {
+            Expires = DateTimeOffset.Now.AddHours(24),
+        });
+
+        return RedirectToAction("Index", new { Registered = "True" });
+
+    }
+
+    [HttpGet]
+    public IActionResult ClearSession()
+    {
+        Response.Cookies.Delete("Username");
+        TempData["Info"] = "You Have Been Forgotten.";
+
+        return RedirectToAction("Index", new { info = "You Have Been Forgotten" });
     }
 
     public IActionResult Privacy()

@@ -4,5 +4,18 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <form method="post" asp-action="RegisterUser">
+        <input type="text value=" hidden Text" name="hidden" hidden>
+        <label for="name">Tell me your name(I'll remember it): </label><br>
+        <input type="text" name="Name">
+        <button type="submit">Send</button>
+    </form>
+
+    @if (Context.Request.Query.ContainsKey("Info"))
+    {
+        <div class="alert alert-primary mt-4">
+            @Context.Request.Query["Info"]
+        </div>
+    }
 </div>

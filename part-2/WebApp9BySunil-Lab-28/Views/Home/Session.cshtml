@@ -1,0 +1,17 @@
+<h1>Welcome Back</h1>
+
+<div class="display-1 alert alert-success fw-bold border-2">
+  @Context.Request.Cookies["Username"]
+</div>
+
+
+@if (Context.Request.Query["Registered"] == "True")
+{
+  <h3>You Have Been registered Successfully</h3>
+}
+
+<a asp-controller="Home" asp-action="ClearSession">Forget me.</a>
+
+@{
+  var role = Context.Items["messasge"];
+}
