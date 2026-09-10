@@ -5,7 +5,7 @@
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:5246",
+      "applicationUrl": "http://localhost:5104",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -14,10 +14,13 @@
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:7053;http://localhost:5246",
+      "applicationUrl": "https://localhost:7102;http://localhost:5104",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
+  },
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost;Database=EFCoreDb;User Id=sa;Password=Admin@123;TrustServerCertificate=True;"
   }
 }
