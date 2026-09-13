@@ -23,6 +23,31 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult Login()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Login(string email, string password)
+    {
+        Console.WriteLine($"login {email}, {password}");
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Register(string name, string email, string password, string confirmPassowrd)
+    {
+        Console.WriteLine($"register {name}, {email}, {password}");
+
+        return View();
+    }
+
+    public IActionResult Register()
+    {
+        return View();
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
