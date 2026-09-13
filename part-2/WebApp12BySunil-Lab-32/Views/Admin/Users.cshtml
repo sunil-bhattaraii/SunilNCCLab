@@ -1,0 +1,43 @@
+@model List<UserListItem>
+@{
+    ViewData["Title"] = "Users";
+}
+
+<h1>Users</h1>
+<p class="text-muted">Sunil Bhattarai | Section B | Roll No. 63/080</p>
+
+@if (TempData["StatusMessage"] is not null)
+{
+    <div class="alert alert-info">@TempData["StatusMessage"]</div>
+}
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Email</th>
+            <th>User Name</th>
+            <th>Roles</th>
+            <th>Claims</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.Email</td>
+                <td>@u.UserName</td>
+                <td>@(u.Roles.Any() ? string.Join(", ", u.Roles) : "(none)")</td>
+                <td>@u.ClaimCount</td>
+                <td>
+                    <a asp-action="EditUser" asp-route-id="@u.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <form asp-action="DeleteUser" asp-route-id="@u.Id" method="post" class="d-inline" onsubmit="return confirm('Delete @u.Email?');">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@u.Id" />
+                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

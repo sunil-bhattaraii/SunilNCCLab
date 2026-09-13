@@ -1,0 +1,89 @@
+@model ManageUserVM
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<h1>Edit User</h1>
+<p class="text-muted">Sunil Bhattarai | Section B | Roll No. 63/080</p>
+
+@if (TempData["StatusMessage"] is not null)
+{
+    <div class="alert alert-info">@TempData["StatusMessage"]</div>
+}
+
+<div class="card mb-4">
+    <div class="card-header"><strong>@Model.Email</strong> <span class="text-muted">(@Model.UserName)</span></div>
+    <div class="card-body">
+        <h5>Assign / Revoke Roles</h5>
+        <form asp-action="EditUser" asp-route-id="@Model.Id" method="post" class="mb-2">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="id" value="@Model.Id" />
+
+            @foreach (var r in Model.Roles)
+            {
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="selectedRoles" value="@r.RoleName"
+                           @(r.Selected ? "checked" : "") id="role_@r.RoleName" />
+                    <label class="form-check-label" for="role_@r.RoleName">@r.RoleName</label>
+                </div>
+            }
+
+            <button type="submit" class="btn btn-primary btn-sm mt-2">Save Roles</button>
+        </form>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h5>Claims</h5>
+
+        @if (Model.Claims.Any())
+        {
+            <table class="table table-sm table-bordered mb-2">
+                <thead class="table-light">
+                    <tr><th>Type</th><th>Value</th><th style="width:200px">Actions</th></tr>
+                </thead>
+                <tbody>
+                    @foreach (var c in Model.Claims)
+                    {
+                        <tr>
+                            <td>@c.Type</td>
+                            <td>
+                                <form asp-action="UpdateUserClaim" asp-route-id="@Model.Id" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@Model.Id" />
+                                    <input type="hidden" name="type" value="@c.Type" />
+                                    <input type="text" name="value" value="@c.Value" class="form-control form-control-sm" style="width:150px;display:inline-block" required />
+                                    <button type="submit" class="btn btn-sm btn-outline-primary">Update</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form asp-action="DeleteUserClaim" asp-route-id="@Model.Id" method="post" class="d-inline" onsubmit="return confirm('Delete claim?');">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@Model.Id" />
+                                    <input type="hidden" name="type" value="@c.Type" />
+                                    <input type="hidden" name="value" value="@c.Value" />
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p class="text-muted">No claims on this user.</p>
+        }
+
+        <form asp-action="AddUserClaim" asp-route-id="@Model.Id" method="post" class="d-flex gap-2 mt-2" style="max-width:500px;">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="id" value="@Model.Id" />
+            <input type="text" name="type" placeholder="Claim type" class="form-control form-control-sm" required />
+            <input type="text" name="value" placeholder="Claim value" class="form-control form-control-sm" required />
+            <button type="submit" class="btn btn-sm btn-outline-success">Add Claim</button>
+        </form>
+    </div>
+</div>
+
+<a asp-action="Users" class="btn btn-secondary">Back to Users</a>

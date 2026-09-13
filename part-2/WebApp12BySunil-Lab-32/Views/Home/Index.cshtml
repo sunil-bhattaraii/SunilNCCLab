@@ -1,0 +1,37 @@
+﻿@using Microsoft.AspNetCore.Identity
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Lab 32 - Admin Panel (Users & Roles)</h1>
+    <p class="lead">ASP.NET Core + Identity Framework Core | Sunil Bhattarai | Section B | Roll No. 63/080</p>
+
+    @if (User.Identity!.IsAuthenticated)
+    {
+        <p>You are logged in as <strong>@User.Identity.Name</strong></p>
+
+        @if (User.IsInRole("Admin"))
+        {
+            <a class="btn btn-primary" asp-controller="Admin" asp-action="Users">Open Admin Panel - Users</a>
+            <a class="btn btn-outline-primary" asp-controller="Admin" asp-action="Roles">Open Admin Panel - Roles</a>
+        }
+        else
+        {
+            <div class="alert alert-warning">
+                Your account has no roles yet. An <strong>Admin</strong> must grant you roles/claims
+                through the Admin panel (test authorization by signing in as admin@example.com).
+            </div>
+        }
+    }
+    else
+    {
+        <p>Please <a asp-controller="Home" asp-action="Login">Login</a> or
+           <a asp-controller="Home" asp-action="Register">Register</a> to continue.</p>
+    }
+
+    @if (TempData["StatusMessage"] is not null)
+    {
+        <div class="alert alert-info mt-3">@TempData["StatusMessage"]</div>
+    }
+</div>
