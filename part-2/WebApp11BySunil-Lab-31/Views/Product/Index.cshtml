@@ -1,0 +1,57 @@
+@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1>Products</h1>
+<p class="text-muted">Sunil Bhattarai | Section B | Roll No. 63/080</p>
+
+@{
+    var canManage = User.IsInRole("Admin") && User.HasClaim("Permission", "ManageProducts");
+}
+
+@if (canManage)
+{
+    <p>
+        <a class="btn btn-success" asp-action="Create">Create New</a>
+    </p>
+}
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Created By</th>
+            @if (canManage)
+            {
+                <th>Actions</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.Name</td>
+                <td>@p.Price.ToString("C")</td>
+                <td>@p.CreatedBy</td>
+                @if (canManage)
+                {
+                    <td>
+                        <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@p.Id">Edit</a>
+                        <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@p.Id">Delete</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p class="text-muted small">
+    Create/Edit/Delete below are protected by the <code>"CanManageProducts"</code> policy which requires the
+    <strong>Admin</strong> role and the <strong>Permission = ManageProducts</strong> claim. Only
+    <strong>@User.Identity!.Name</strong> with Admin rights can perform these actions.
+</p>

@@ -1,11 +1,53 @@
-@using Microsoft.AspNetCore.Identity
-@model IdentityUser
+@{
+    ViewData["Title"] = "Register";
+}
 
-<h1>Register</h1>
-<form method="post" asp-action="Register">
-  <input type="text" name="name" placeholder="Name">
-  <input type="email" name="email" placeholder="email">
-  <input type="text" name="password" placeholder="password">
-  <input type="text" name="confirmPassword" placeholder="confirmPassword">
-  <button type="submit" class="btn btn-primary">Sign Up</button>
-</form>
+<div class="row justify-content-center mt-4">
+    <div class="col-md-5 card p-4 shadow-sm">
+        <h2 class="text-center mb-2">Register</h2>
+        <p class="text-center text-muted">Sunil Bhattarai | Section B | Roll No. 63/080</p>
+        <form asp-action="Register" method="post">
+            <div asp-validation-summary="All" class="text-danger mb-2"></div>
+
+            <div class="mb-3">
+                <label class="form-label">Full Name</label>
+                <input type="text" name="name" value="Sunil Bhattarai" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email Address</label>
+                <input type="email" name="email" placeholder="you@example.com" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Confirm Password</label>
+                <input type="password" name="confirmPassword" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Role (assigned at registration - used by ROLE based authorization)</label>
+                <select name="role" class="form-select">
+                    <option value="User">User</option>
+                    <option value="Admin">Admin</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Department (stored as a CLAIM - used by CLAIM based authorization)</label>
+                <select name="department" class="form-select">
+                    <option value="General">General</option>
+                    <option value="IT">IT</option>
+                    <option value="HR">HR</option>
+                    <option value="Finance">Finance</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Register</button>
+        </form>
+    </div>
+</div>

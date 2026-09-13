@@ -3,6 +3,23 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Lab 31 - Authorization via Roles, Claims & Policies</h1>
+    <p class="lead">Identity Framework Core | Sunil Bhattarai | Section B | Roll No. 63/080</p>
+    @if (User.Identity!.IsAuthenticated)
+    {
+        <p>You are logged in as <strong>@User.Identity.Name</strong>
+            @foreach (var role in
+                User.FindAll(System.Security.Claims.ClaimTypes.Role))
+            {
+                <span class="badge bg-primary">@role.Value</span>
+            }
+        </p>
+        <a class="btn btn-outline-primary" asp-controller="Product" asp-action="Index">Go to Products</a>
+    }
+    else
+    {
+        <p>Please <a asp-controller="Home" asp-action="Login">Login</a> or
+            <a asp-controller="Home" asp-action="Register">Register</a> to continue.
+        </p>
+    }
 </div>
