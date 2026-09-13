@@ -1,0 +1,43 @@
+@model string
+@{
+    ViewData["Title"] = "XSS Demo";
+}
+
+<h1>Cross-Site Scripting (XSS)</h1>
+<p class="text-muted">Sunil Bhattarai | Section B | Roll No. 63/080</p>
+
+<p>
+    Submit a comment below. <strong>Example payload:</strong>
+    <code>&lt;img src=x onerror=alert('XSS')&gt; Hello &lt;b&gt;World&lt;/b&gt;</code>
+</p>
+
+<form method="post" class="mb-4">
+    <div class="input-group" style="max-width:600px;">
+        <input type="text" name="comment" class="form-control" placeholder="Enter your comment (try some HTML)" required />
+        <button type="submit" class="btn btn-primary">Submit Comment</button>
+    </div>
+</form>
+
+@if (!string.IsNullOrEmpty(Model))
+{
+    <div class="card mb-3">
+        <div class="card-header"><strong>1) Encoded output (Razor's default @@Model does this) - SAFE</strong></div>
+        <div class="card-body">
+            <p>The browser treats it as plain text - a script here is <em>not</em> executed:</p>
+            <div class="border p-2 bg-light">@Model</div>
+        </div>
+    </div>
+
+    <div class="card mb-3 border-danger">
+        <div class="card-header text-danger"><strong>2) Raw output (@@Html.Raw(Model)) - VULNERABLE</strong></div>
+        <div class="card-body">
+            <p>The input is injected as live HTML. If the payload contained a script it would execute:</p>
+            <div class="border p-2 bg-warning-subtle">@Html.Raw(Model)</div>
+        </div>
+    </div>
+
+    <p class="small text-muted">
+        ASP.NET Core Razor automatically HTML-encodes all model output (@@Model), which neutralises the payload.
+        Using <code>@@Html.Raw()</code> bypasses that protection and is what makes the page vulnerable.
+    </p>
+}

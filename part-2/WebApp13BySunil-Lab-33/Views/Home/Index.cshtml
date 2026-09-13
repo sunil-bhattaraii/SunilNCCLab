@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-5">Lab 33 - Securing ASP.NET Core App</h1>
+    <p class="lead">Sunil Bhattarai | Section B | Roll No. 63/080</p>
+
+    <div class="row row-cols-1 row-cols-md-2 g-3 mt-2 text-start">
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">1. Cross-Site Scripting (XSS)</h5>
+                    <p class="card-text">Submit a comment containing HTML/script and see the difference between
+                    unencoded raw output and ASP.NET Core's default output encoding.</p>
+                    <a class="btn btn-sm btn-primary" asp-action="Xss">Open demo</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">2. SQL Injection</h5>
+                    <p class="card-text">Try the classic input <code>' OR '1'='1</code> on the unparameterized
+                    ADO.NET query versus the parameterized query.</p>
+                    <a class="btn btn-sm btn-primary" asp-action="Sqli">Open demo</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">3. CSRF Protection</h5>
+                    <p class="card-text">A form protected by an anti-forgery token succeeds, while a forged
+                    cross-site POST without the token gets rejected.</p>
+                    <a class="btn btn-sm btn-primary" asp-action="Csrf">Open demo</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">4. Open Redirect</h5>
+                    <p class="card-text">A vulnerable redirect will jump to an external URL, while the safe
+                    redirect only accepts local URLs.</p>
+                    <a class="btn btn-sm btn-primary" asp-action="OpenRedirect">Open demo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

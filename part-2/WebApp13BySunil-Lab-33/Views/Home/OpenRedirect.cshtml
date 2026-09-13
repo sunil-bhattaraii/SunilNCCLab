@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Open Redirect Demo";
+}
+
+<h1>Open Redirect</h1>
+<p class="text-muted">Sunil Bhattarai | Section B | Roll No. 63/080</p>
+
+<p>
+    Enter a destination URL such as <code>https://evil.example.com</code> or a local one such as
+    <code>/Home/Xss</code>, then try both buttons.
+</p>
+
+<form method="post" class="mb-3">
+    <div class="input-group" style="max-width:560px;">
+        <input type="text" name="url" class="form-control" placeholder="Destination URL e.g. https://evil.example.com" required />
+    </div>
+    <div class="mt-2 gap-2 d-flex">
+        <button class="btn btn-danger" asp-action="RedirectVulnerable">Vulnerable Redirect</button>
+        <button class="btn btn-success" asp-action="RedirectSafe">Safe Redirect</button>
+    </div>
+</form>
+
+@if (ViewBag.Error is not null)
+{
+    <div class="alert alert-warning">@ViewBag.Error</div>
+}
+
+<p class="small text-muted">
+    The <em>vulnerable</em> version calls <code>Redirect(url)</code> and will happily send the browser to any
+    external site. The <em>safe</em> version only continues when <code>Url.IsLocalUrl(url)</code> is true
+    (i.e. the URL really points inside this application) and otherwise refuses.
+</p>

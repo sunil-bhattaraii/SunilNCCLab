@@ -1,0 +1,89 @@
+@model SqliVM
+@{
+    ViewData["Title"] = "SQL Injection Demo";
+}
+
+<h1>SQL Injection</h1>
+<p class="text-muted">Sunil Bhattarai | Section B | Roll No. 63/080</p>
+
+<p>
+    The page queries a <code>Users</code> table using raw ADO.NET. Try the payload
+    <code>' OR '1'='1</code> in the <strong>vulnerable</strong> query - it reveals every user.
+</p>
+
+<div class="row g-3">
+    <div class="col-md-6">
+        <div class="card h-100 border-danger">
+            <div class="card-header text-danger">Vulnerable query (string concatenation)</div>
+            <div class="card-body">
+                <form method="post">
+                    <input type="hidden" name="mode" value="vuln" />
+                    <div class="input-group mb-2">
+                        <input type="text" name="input" class="form-control" placeholder="User name e.g. ' OR '1'='1" required />
+                        <button class="btn btn-danger">Run</button>
+                    </div>
+                </form>
+
+                @if (Model.Mode == "vuln")
+                {
+                    <p class="small text-break">SQL executed:<br /><code>@Model.Sql</code></p>
+
+                    @if (Model.Rows.Any())
+                    {
+                        <table class="table table-sm table-bordered">
+                            <thead class="table-dark"><tr><th>Id</th><th>Name</th><th>Password</th><th>Role</th></tr></thead>
+                            <tbody>
+                                @foreach (var r in Model.Rows)
+                                {
+                                    <tr><td>@r.Id</td><td>@r.Name</td><td>@r.Password</td><td>@r.Role</td></tr>
+                                }
+                            </tbody>
+                        </table>
+                        <p class="small text-danger">@Model.Rows.Count row(s) returned instead of 1 - injection succeeded.</p>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No rows.</p>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card h-100 border-success">
+            <div class="card-header text-success">Parameterized query (fix)</div>
+            <div class="card-body">
+                <form method="post">
+                    <input type="hidden" name="mode" value="safe" />
+                    <div class="input-group mb-2">
+                        <input type="text" name="input" class="form-control" placeholder="User name e.g. ' OR '1'='1" />
+                        <button class="btn btn-success">Run</button>
+                    </div>
+                </form>
+
+                @if (Model.Mode == "safe")
+                {
+                    <p class="small text-break">SQL executed:<br /><code>@Model.Sql</code><br />Parameter bound: <code>@@name = '@Model.Input'</code> (as a <code>SqlParameter</code>, not SQL text)</p>
+
+                    @if (Model.Rows.Any())
+                    {
+                        <table class="table table-sm table-bordered">
+                            <thead class="table-dark"><tr><th>Id</th><th>Name</th><th>Password</th><th>Role</th></tr></thead>
+                            <tbody>
+                                @foreach (var r in Model.Rows)
+                                {
+                                    <tr><td>@r.Id</td><td>@r.Name</td><td>@r.Password</td><td>@r.Role</td></tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No rows - the payload is treated as a plain string value, so it cannot change the query logic.</p>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

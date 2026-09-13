@@ -1,0 +1,63 @@
+@{
+    ViewData["Title"] = "CSRF Demo";
+}
+
+<h1>Cross-Site Request Forgery (CSRF)</h1>
+<p class="text-muted">Sunil Bhattarai | Section B | Roll No. 63/080</p>
+
+<p>
+    ASP.NET Core's anti-forgery system pairs a cookie with a hidden <code>__RequestVerificationToken</code>
+    field in every form. A legitimate form includes both; a forged cross-site form cannot know the token.
+    The token is generated automatically by tag helpers <code>(form asp-action=...)</code> -
+    view the page source to see the hidden input.
+</p>
+
+@if (TempData["CsrfSuccess"] is not null)
+{
+    <div class="alert alert-success">@TempData["CsrfSuccess"]</div>
+}
+
+<div class="row g-3">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header text-success">Legitimate request (token present)</div>
+            <div class="card-body">
+                <form asp-action="Transfer" method="post">
+                    <div class="mb-2">
+                        <label class="form-label">Account</label>
+                        <input type="text" name="account" class="form-control" value="1001" required />
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Amount (Rs.)</label>
+                        <input type="text" name="amount" class="form-control" value="5000" required />
+                    </div>
+                    <button class="btn btn-primary">Submit Transfer (with token)</button>
+                </form>
+                <p class="text-muted small mt-2">This form renders a hidden anti-forgery token, so the action runs.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card border-danger">
+            <div class="card-header text-danger">Forged request (simulated cross-site, no token)</div>
+            <div class="card-body">
+                <form method="post" action="/Home/Transfer">
+                    <div class="mb-2">
+                        <label class="form-label">Account</label>
+                        <input type="text" name="account" class="form-control" value="9999" />
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Amount (Rs.)</label>
+                        <input type="text" name="amount" class="form-control" value="5000" />
+                    </div>
+                    <button class="btn btn-danger">Submit (no token - forged)</button>
+                </form>
+                <p class="text-muted small mt-2">
+                    A cross-site page cannot include the victim's token, so the server returns
+                    <strong>HTTP 400</strong> and the <code>Transfer</code> action never runs.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
