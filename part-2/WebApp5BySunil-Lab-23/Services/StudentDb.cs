@@ -3,7 +3,7 @@ using WebApp5BySunil_Lab_23.Models;
 
 public class StudentDb
 {
-  private readonly string connectionString = "Server=localhost,1433;Database=StudentDb;User Id=sa;Password=Admin@123;TrustServerCertificate=True";
+  private readonly string connectionString = "Server=8gmwhb8g-1433.inc1.devtunnels.ms,443;Database=StudentDb;User Id=sa;Password=Admin@123;TrustServerCertificate=True";
 
   SqlConnection GetConnection()
   {
